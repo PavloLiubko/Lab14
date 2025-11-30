@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+
+	setlocale(LC_ALL, "UKR");
+
+	vector<vector<int>> A;
+
+	int n;
+	cout << endl << "Введіть кількість стовпців та рядків матриці:";
+	cin >> n;
+
+	for (int i = 0; i < n; i++) {
+		A.push_back({});
+		for (int j = 0; j < n; j++) {
+			cout << endl << "Введіть якесь значення для векторної матриці:";
+			int num;
+			cin >> num;
+			A[i].push_back(num);
+		}
+	}
+
+	cout << endl << "Наша матриця:\n";
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << A[i][j];
+		}
+		cout << endl;
+	}
+
+	vector<vector<int>> turned_matrix;
+
+		for (int i = 0; i < n; i++) {
+			turned_matrix.push_back({});
+			for (int j = 0; j < n; j++) {
+				turned_matrix[i].push_back(A[j][i]);
+			}
+		}
+		cout << endl << "Наша повернута матриця:\n";
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << turned_matrix[i][j];
+			}
+			cout << endl;
+		}
+		vector<int> nums;
+
+		for (int i = 0; i < n; i++) {
+			int min = *min_element(turned_matrix[i].begin(), turned_matrix[i].end());
+			nums.push_back(min);
+		}
+
+		cout << endl << "Вектор, який запитували:\n";
+		for (int i = 0; i < n; i++) {
+			cout << nums[i] << endl;
+		}
+	
+	return 0;
+}
