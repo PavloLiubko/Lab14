@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+	setlocale(LC_ALL, "UKR");
+
+	int A[5][5];
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			int num;
+			cout << "Введіть якесь значення для елемента матриці(на проміжку від -10 до 10):";
+			cin >> num;
+			if (num > -10 && num < 10) {
+				A[i][j] = num;
+			}
+			else {
+				cout << "Ваше число не належить цьому проміжку, введіть нормальне число на проміжку від -10 до 10:";
+				cin >> A[i][j];
+
+			}
+
+		}
+	}
+
+	cout << "Наша матриця:\n";
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			cout << A[i][j];
+		}
+		cout << endl;
+	}
+
+	double maximum = A[0][0];
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (A[i][j] > maximum) {
+				maximum = A[i][j];
+			}
+		}
+	}
+
+	double minimum = A[0][0];
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (A[i][j] < minimum) {
+				minimum = A[i][j];
+			}
+		}
+	}
+
+	cout << "Середнє арифметичне максимального і мінімального значент = " << (maximum + minimum) / 2;
+
+	return 0;
+}
