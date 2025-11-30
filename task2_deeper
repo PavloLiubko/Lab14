@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+
+	setlocale(LC_ALL, "UKR");
+
+	vector<vector<int>> A;
+
+	int n;
+	cout << endl << "Введіть кількість стовпців та рядків матриці:";
+	cin >> n;
+
+	for (int i = 0; i < n; i++) {
+		A.push_back({});
+		for (int j = 0; j < n; j++) {
+			cout << endl << "Введіть якесь значення для векторної матриці:";
+			int num;
+			cin >> num;
+			A[i].push_back(num);
+		}
+	}
+
+	cout << endl << "Наша матриця:\n";
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << A[i][j];
+		}
+		cout << endl;
+	}
+
+
+	vector<int> col1;
+	for (int i = 0; i < A.size(); i++) {
+		col1.push_back(A[i][0]);
+	}
+
+	vector<int> col2;
+	for (int i = 0; i < A.size(); i++) {
+		col2.push_back(A[A.size() -1 ][A.size() - 1]);
+	}
+	
+
+	for (int i = 0; i < A.size(); i++) {
+		A[i][0] = col2[i];
+	}
+	for (int i = 0; i < A.size(); i++) {
+		A[i][A.size()  - 1] = col1[i];
+	}
+
+
+
+
+	cout << endl << "Наша змінена матриця:\n";
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << A[i][j];
+		}
+		cout << endl;
+	}
+	
+	return 0;
+}
