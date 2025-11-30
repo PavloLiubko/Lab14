@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+
+	setlocale(LC_ALL, "UKR");
+
+	vector<vector<int>> A = {
+	{3, 4, 5, 6},
+	{7, 8, 9, 10},
+	{11, 12 ,13 ,14}
+	};
+
+	int maximum = A[0][0];
+	for (int i = 0; i < A.size(); i++) {
+		for (int j = 0; j < A[0].size(); j++) {
+			if (maximum < A[i][j]) {
+				maximum = A[i][j];
+			}
+		}
+	}
+
+	int minimum = A[0][0];
+	for (int i = 0; i < A.size(); i++) {
+		for (int j = 0; j < A[0].size(); j++) {
+			if (minimum > A[i][j]) {
+				minimum = A[i][j];
+			}
+		}
+	}
+
+	int nums;
+	int count_max = 0;
+	int count_min = 0;
+	cout << "Введіть кількість чисел, які бажаєте ввести:";
+	cin >> nums;
+
+	for (int el3 = 0; el3 < nums; el3++) {
+		cout << "Введіть число, яке бажаєте добавити до матриці:";
+		int num;
+		cin >> num;
+		A[2].push_back(num);
+		if (num < minimum) {
+			count_min += 1;
+		}
+		else if (num > maximum) {
+			count_max += 1;
+		}
+
+	}
+
+	cout << "Кількість входжень максимального числа: " << count_max << ", кількість входжень мінімального числа: " << count_min;
+
+	return 0;
+}
